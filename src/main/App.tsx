@@ -74,6 +74,61 @@ function App() {
                   </div>
                 </div>
               </li>
+              <li className="section_2__gallery-item">
+                <div className="section_2__gallery-photo">
+                  <img src={foto} alt="" />
+                </div>
+                <div className="section_2__item-info">
+                  <div className="item-info__element">
+                    <h2 className="item-title">Cascate di Tivoli</h2>
+                    <p className="item-date">1761</p>
+                  </div>
+                </div>
+              </li>
+              <li className="section_2__gallery-item">
+                <div className="section_2__gallery-photo">
+                  <img src={foto} alt="" />
+                </div>
+                <div className="section_2__item-info">
+                  <div className="item-info__element">
+                    <h2 className="item-title">Cascate di Tivoli</h2>
+                    <p className="item-date">1761</p>
+                  </div>
+                </div>
+              </li>
+              <li className="section_2__gallery-item">
+                <div className="section_2__gallery-photo">
+                  <img src={foto} alt="" />
+                </div>
+                <div className="section_2__item-info">
+                  <div className="item-info__element">
+                    <h2 className="item-title">Cascate di Tivoli</h2>
+                    <p className="item-date">1761</p>
+                  </div>
+                </div>
+              </li>
+              <li className="section_2__gallery-item">
+                <div className="section_2__gallery-photo">
+                  <img src={foto} alt="" />
+                </div>
+                <div className="section_2__item-info">
+                  <div className="item-info__element">
+                    <h2 className="item-title">Cascate di Tivoli</h2>
+                    <p className="item-date">1761</p>
+                  </div>
+                </div>
+              </li>
+              <li className="section_2__gallery-item">
+                <div className="section_2__gallery-photo">
+                  <img src={foto} alt="" />
+                </div>
+                <div className="section_2__item-info">
+                  <div className="item-info__element">
+                    <h2 className="item-title">Cascate di Tivoli</h2>
+                    <p className="item-date">1761</p>
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </section>
@@ -82,8 +137,10 @@ function App() {
             <nav className="section_3__pagination" aria-label="Навигация по страницам">
               <ul className="section_3__pagination-list">
                 <li className="pagination-item">
-                  <a href="#" className="pagination-link pagination-prev" aria-label="Предыдущая страница">
-                    <span>&lt;</span>
+                  <a href="#" className="pagination-link pagination pagination-prev" aria-label="Предыдущая страница">
+                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.312255 0.283372C0.487119 0.0696493 0.80213 0.0381482 1.01585 0.213012L7.61585 5.61301C7.73192 5.70798 7.79923 5.85002 7.79923 5.99999C7.79923 6.14996 7.73192 6.29201 7.61585 6.38697L1.01585 11.787C0.80213 11.9618 0.487119 11.9303 0.312255 11.7166C0.137391 11.5029 0.168893 11.1879 0.382615 11.013L6.50964 5.99999L0.382615 0.986969C0.168892 0.812106 0.137391 0.497094 0.312255 0.283372Z" fill="#575757"/>
+                    </svg>
                   </a>
                 </li>
                 <li className="pagination-group">
@@ -98,7 +155,8 @@ function App() {
                       <a href="#" className="pagination-link">3</a>
                     </li>
                     <li className="pagination-item">
-                      <span className="pagination-ellipsis">...</span>
+                      {/* <span className="pagination-ellipsis">...</span> */}
+                      <a href="#" className="pagination-link">...</a>
                     </li>
                     <li className="pagination-item">
                       <a href="#" className="pagination-link">9</a>
@@ -106,8 +164,10 @@ function App() {
                   </ul>
                 </li>
                 <li className="pagination-item">
-                  <a href="#" className="pagination-link pagination-next" aria-label="Следующая страница">
-                    <span>&gt;</span>
+                  <a href="#" className="pagination-link pagination pagination-next" aria-label="Следующая страница">
+                    <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.312255 0.283372C0.487119 0.0696493 0.80213 0.0381482 1.01585 0.213012L7.61585 5.61301C7.73192 5.70798 7.79923 5.85002 7.79923 5.99999C7.79923 6.14996 7.73192 6.29201 7.61585 6.38697L1.01585 11.787C0.80213 11.9618 0.487119 11.9303 0.312255 11.7166C0.137391 11.5029 0.168893 11.1879 0.382615 11.013L6.50964 5.99999L0.382615 0.986969C0.168892 0.812106 0.137391 0.497094 0.312255 0.283372Z" fill="#575757"/>
+                    </svg>
                   </a>
                 </li>
               </ul>

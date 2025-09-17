@@ -20,6 +20,7 @@
         &:hover {
             background: #F3F3F3;
         }
+
         &:focus {
             background: #F3F3F3;
         }
@@ -44,7 +45,7 @@
         border: 1px solid #DEDEDE;
         border-radius: 4px;
         transition: border .2s;
-        
+
         &:focus-within {
             border: 1px solid #575757;
         }
@@ -92,10 +93,12 @@
     &__gallery-item {
         position: relative;
     }
+
     &__gallery-photo {
         display: block;
         width: 100%;
     }
+
     &__item-info {
         position: absolute;
         left: 0;
@@ -139,6 +142,38 @@
         margin: 0;
         padding: 0;
     }
+
+    .pagination-item:hover {
+        background: #1212120D;
+        border-radius: 5px;
+    }
+    .pagination-link {
+        padding: 8px;
+        // font-family: var(--font-family);
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 140%;
+        color: #575757;
+
+        &:hover {
+            font-weight: 500;
+            color: #3b3b3b;
+        }
+    }
+
+    .pagination-link.pagination {
+        padding: 5.1px;
+
+        &:hover  {
+            svg path {
+                fill: #121212;
+            }
+        }
+        &.pagination-prev svg {
+            transform: rotate(180deg);
+        }
+    }
+
     .pagination-group__list {
         display: flex;
         gap: 4px;
