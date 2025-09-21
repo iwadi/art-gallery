@@ -16,7 +16,7 @@
                 font-weight: 500;
                 font-size: 16px;
                 text-transform: uppercase;
-                color: #121212;
+                color: var(--text-color);
                 margin: 0 0 clamp(4px, 3vw, 12px) 0;
             }
 
@@ -24,7 +24,7 @@
                 font-weight: 700;
                 font-size: 12px;
                 text-transform: uppercase;
-                color: #9B4B4B;
+                color: var(--gallery-color);
                 margin: 0;
             }
         }
