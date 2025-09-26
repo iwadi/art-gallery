@@ -3,6 +3,9 @@
         padding-left: 20px;
         padding-right: 20px;
     }
+    .section_2 {
+        min-height: 708px;
+    }
     .section_2__item-info {
         width: clamp(236px, 50vw, 300px);
         height: clamp(45px, 50vw, 82px);
