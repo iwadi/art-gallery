@@ -1,56 +1,38 @@
-export const mockData = [
-    { id: 1, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 2, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 3, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 4, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 5, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 6, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 7, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 8, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 9, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 10, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 11, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 12, image: 'image 2.jpg', title: 'lflflflf', date: '1488' },
-    { id: 13, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 14, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 15, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 16, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 17, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 18, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 19, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 20, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 21, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 22, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 23, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 24, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 25, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 26, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 27, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 28, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 29, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 30, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 31, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 32, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 33, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 34, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 35, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 36, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 37, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 38, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 39, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 40, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 41, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 42, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 43, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 44, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 45, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 46, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 47, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 48, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 49, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 50, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
-    { id: 51, image: 'image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
+export interface GalleryItem {
+  id: number;
+  image: string;
+  title: string;
+  date: string;
+}
+
+// const BASE_API_URL = 'test-front.framework.team/';
+const BASE_API_URL = 'https://test-front.framework.team';
+
+const staticMockData: GalleryItem[] = [
+  { id: 1, image: 'src/photos/gallery/image 2.jpg', title: 'Cascate di Tivoli', date: '1761' },
 ].map(item => ({
-    ...item,
-    image: `src/photos/gallery/${item.image}`
+  ...item,
+  image: `src/photos/gallery/${item.image}`
 }));
+
+export const fetchGalleryData = async (): Promise<GalleryItem[]> => {
+  try {
+    const response = await fetch(`${BASE_API_URL}/paintings`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+
+    console.log('API Response:', data);
+
+    return data.map((item: any) => ({
+      id: item.id,
+      image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
+      title: item.title || item.name || 'No title',
+      date: item.created?.toString() || item.date || 'Unknown date',
+    }));
+  } catch (error) {
+    console.error('Failed to fetch data from API, using fallback data:', error);
+    return staticMockData;
+  }
+};

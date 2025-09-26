@@ -1,3 +1,4 @@
+// This is necessary to work with the theme on the site.
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
 
