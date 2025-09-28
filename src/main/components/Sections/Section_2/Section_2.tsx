@@ -1,10 +1,8 @@
-// import { GalleryItem } from '../../../../data/mock';
 import { type GalleryItem } from '../../../../data/mock';
 
 interface Section2Props {
     data: GalleryItem[];
 }
-
 function Section_2({ data }: Section2Props) {
     return (
         <section className="section_2">

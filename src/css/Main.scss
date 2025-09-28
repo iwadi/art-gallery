@@ -168,6 +168,7 @@
 
   .pagination-ellipsis {
     cursor: pointer;
+    color: var(--pagination-color);
   }
 
   .pagination-link {
@@ -220,7 +221,7 @@
   }
 }
 
-// // Добавляем стили для кнопки переключения темы
+// // Adding styles to the theme switch button
 // .theme-toggle {
 //   background: none;
 //   border: none;
