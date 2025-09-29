@@ -61,7 +61,7 @@ function Section_3({ currentPage, totalPages, onPageChange }: Section3Props) {
                 <li className="pagination-item">
                     <button 
                     className={`pagination-link pagination prev ${currentPage === 1 ? 'disabled' : ''}`}
-                    aria-label="Предыдущая страница"
+                    aria-label="Previous page"
                     onClick={handlePrevClick}
                     disabled={currentPage === 1}
                     >
@@ -93,7 +93,7 @@ function Section_3({ currentPage, totalPages, onPageChange }: Section3Props) {
                 <li className="pagination-item">
                     <button 
                     className={`pagination-link pagination next ${currentPage === totalPages ? 'disabled' : ''}`}
-                    aria-label="Следующая страница"
+                    aria-label="Next page"
                     onClick={handleNextClick}
                     disabled={currentPage === totalPages}
                     >
