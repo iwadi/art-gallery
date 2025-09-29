@@ -5,32 +5,29 @@ import sun from '../../../photos/svg/sun.svg';
 import { useTheme } from '../../context/ThemeContext';
 
 function Header() {
-    const { isDark, toggleTheme } = useTheme();
+  const { isDark, toggleTheme } = useTheme();
 
-    return (
+  return (
     <>
-    <header className="header">
-    <div className="container">
-        <div className="header__content">
+      <header className="header">
+        <div className="container">
+          <div className="header__content">
             <div className="header__logo">
-                <a href="#">
-                <img
-                    src={isDark ? logoLight : logoDark}
-                    alt="framework team"
-                />
-                </a>
+              <a href="#">
+                <img src={isDark ? logoLight : logoDark} alt="framework team" />
+              </a>
             </div>
             <button className="header__button" onClick={toggleTheme} aria-label="Toggle theme">
-                <img
-                    src={isDark ? sun : moon}
-                    alt={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                />
+              <img
+                src={isDark ? sun : moon}
+                alt={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+              />
             </button>
+          </div>
         </div>
-    </div>
-    </header>
+      </header>
     </>
-    );
+  );
 }
 
 export default Header;

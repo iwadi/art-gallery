@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '../css/variables.scss';
 import '../css/Base.scss';
 import '../css/Main.scss';
@@ -15,7 +14,7 @@ function App() {
         <Sections />
       </main>
     </ThemeProvider>
-  )
+  );
 }
 
 export default App;

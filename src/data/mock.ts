@@ -1,9 +1,10 @@
+import axios from 'axios';
+
 export interface GalleryItem {
   id: number;
   image: string;
   title: string;
   date: string;
-  // author?: string;
 }
 
 export interface GalleryResponse {
@@ -11,31 +12,38 @@ export interface GalleryResponse {
   totalCount: number;
 }
 
+interface RawGalleryItem {
+  id: number;
+  imageUrl?: string;
+  name?: string;
+  title?: string;
+  created?: string;
+  year?: number;
+}
+
 const BASE_API_URL = 'https://test-front.framework.team';
 
-// Функция для клиентской фильтрации
+const apiClient = axios.create({
+  baseURL: BASE_API_URL,
+  timeout: 10000,
+});
+
 const filterItemsClientSide = (items: GalleryItem[], searchTerm: string): GalleryItem[] => {
   if (!searchTerm.trim()) return items;
 
   const searchLower = searchTerm.toLowerCase().trim();
-  
+
   return items.filter(item => {
-    // Ищем в разных полях
     const searchFields = [
       item.title?.toLowerCase() || '',
-      // item.author?.toLowerCase() || '',
       item.date?.toString() || '',
-      item.id?.toString() || ''
+      item.id?.toString() || '',
     ];
 
-    // Разбиваем поисковый запрос на части
     const searchParts = searchLower.split(/\s+/);
-    
-    // Проверяем, что все части запроса найдены в каких-либо полях
+
     return searchParts.every(part => {
       if (!part) return true;
-      
-      // Ищем частичное совпадение в любом из полей
       return searchFields.some(field => field.includes(part));
     });
   });
@@ -48,63 +56,51 @@ export const fetchGalleryData = async (
   useClientSideFiltering: boolean = false
 ): Promise<GalleryResponse> => {
   try {
-    const params = new URLSearchParams({
-      _page: page.toString(),
-      _limit: limit.toString(),
-    });
+    const params: Record<string, unknown> = {
+      _page: page,
+      _limit: limit,
+    };
 
-    let allData: GalleryItem[] = [];
-    let totalCount = 0;
+    if (useClientSideFiltering) {
+      const response = await apiClient.get('/paintings');
+      const allDataRaw = response.data as RawGalleryItem[];
 
-    if (useClientSideFiltering && searchTerm.trim()) {
-      // Загружаем все данные для клиентской фильтрации
-      const allResponse = await fetch(`${BASE_API_URL}/paintings`);
-      if (!allResponse.ok) {
-        throw new Error(`HTTP error! status: ${allResponse.status}`);
-      }
-      
-      const allDataRaw = await allResponse.json();
-      allData = allDataRaw.map((item: any) => ({
+      const allData: GalleryItem[] = allDataRaw.map((item: RawGalleryItem) => ({
         id: item.id,
         image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
         title: item.name || item.title || 'No title',
         date: item.created || item.year?.toString() || 'Unknown date',
-        // author: item.authorId?.name || item.authorName || 'Unknown Artist'
       }));
 
-      // Применяем клиентскую фильтрацию
       const filteredData = filterItemsClientSide(allData, searchTerm);
-      totalCount = filteredData.length;
-      
-      // Применяем пагинацию к отфильтрованным данным
+      const totalCount = filteredData.length;
       const startIndex = (page - 1) * limit;
       const endIndex = startIndex + limit;
       const paginatedData = filteredData.slice(startIndex, endIndex);
 
       return { data: paginatedData, totalCount };
     } else {
-      // Стандартный API поиск
       if (searchTerm.trim()) {
-        params.append('q', searchTerm.trim());
+        params.q = searchTerm.trim();
       }
 
-      const response = await fetch(`${BASE_API_URL}/paintings?${params}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      const response = await apiClient.get('/paintings', { params });
 
-      const data = await response.json();
-      totalCount = parseInt(response.headers.get('X-Total-Count') || '0', 10);
+      const responseData = response.data as RawGalleryItem[];
 
-      const galleryItems: GalleryItem[] = data.map((item: any) => ({
+      const galleryItems: GalleryItem[] = responseData.map((item: RawGalleryItem) => ({
         id: item.id,
         image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
         title: item.name || item.title || 'No title',
         date: item.created || item.year?.toString() || 'Unknown date',
-        // author: item.authorId?.name || item.authorName || 'Unknown Artist'
       }));
 
-      return { data: galleryItems, totalCount };
+      const totalCount = parseInt(response.headers['x-total-count'] || '0', 10);
+
+      return {
+        data: galleryItems,
+        totalCount,
+      };
     }
   } catch (error) {
     console.error('Failed to fetch data from API:', error);
