@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "CormorantSC";
+  font-weight: 500;
+  font-style: normal;
+  src: local("CormorantSC Medium"), local("CormorantSC-Medium"),
+    url("../text/CormorantSC-Medium.woff2") format('woff2'),
+    url("../text/CormorantSC-Medium.woff") format('woff'),
+    url("../text/CormorantSC-Medium.eot") format('embedded-opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 300;
+  font-style: normal;
+  src: local("Inter Light"), local("Inter-Light"),
+    url("../text/Inter-Light.woff2") format('woff2'),
+    url("../text/Inter-Light.woff") format('woff'),
+    url("../text/Inter-Light.eot") format('embedded-opentype');
+  font-display: swap;
+}

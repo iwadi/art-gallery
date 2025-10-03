@@ -69,11 +69,15 @@
   &__input {
     width: 100%;
     border: none;
-    color: var(--text-color);
+    color: var(--input-color);
     background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
 
     &::placeholder {
       color: var(--placeholder-color);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
     }
 
     &:focus {
@@ -98,9 +102,6 @@
 
   &__gallery-item {
     position: relative;
-    // background-color: var(--card-bg);
-    // border-radius: 4px;
-    // overflow: hidden;
   }
 
   &__gallery-photo img {
@@ -124,6 +125,7 @@
       border-left: 2px solid var(--gallery-color);
 
       .item-title {
+        font-family: 'CormorantSC', serif;
         font-weight: 500;
         font-size: 16px;
         text-transform: uppercase;
@@ -132,6 +134,7 @@
       }
 
       .item-date {
+        font-family: 'Inter', sans-serif;
         font-weight: 700;
         font-size: 12px;
         text-transform: uppercase;
@@ -141,6 +144,8 @@
     }
   }
 }
+
+/* =============== */
 
 .section_3 {
   margin-top: 40px;
@@ -155,11 +160,6 @@
   }
 
   .pagination-item {
-    // &:hover {
-    //   background: var(--svg-shell);
-    //   border-radius: 5px;
-    // }
-
     &.active {
       background: var(--svg-shell);
       border-radius: 5px;
@@ -168,6 +168,8 @@
 
   .pagination-ellipsis {
     color: var(--pagination-color);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
   }
 
   .pagination-link {
@@ -175,6 +177,7 @@
     border: none;
     background: transparent;
     padding: 8px;
+    font-family: 'Inter', sans-serif;
     font-weight: 300;
     font-size: 16px;
     line-height: 140%;
@@ -186,21 +189,16 @@
     &:not(.active):hover {
       border-bottom: 1px solid var(--border-bottom);
       font-weight: 500;
-      color: var(--text-color);
     }
 
     &.active {
-      font-weight: 500;
-      color: var(--text-color);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
     }
 
     &.pagination {
       padding: 5.1px;
       color: var(--svg-color);
-
-      // &.svg path {
-      //   color: var(--svg-color);
-      // }
 
       &:hover {
         background: var(--svg-shell);
@@ -225,14 +223,3 @@
     padding: 0;
   }
 }
-
-// // Adding styles to the theme switch button
-// .theme-toggle {
-//   background: none;
-//   border: none;
-//   cursor: pointer;
-//   font-size: 1.5rem;
-//   padding: 0.5rem;
-//   background-color: var(--header-button-bg);
-//   transition: color 0.3s ease;
-// }

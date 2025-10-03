@@ -56,7 +56,7 @@ function Section_3({ currentPage, totalPages, onPageChange }: Section3Props) {
     <>
       <section className="section_3">
         <div className="container">
-          <nav className="section_3__pagination" aria-label="Навигация по страницам">
+          <nav className="section_3__pagination" aria-label="Page navigation">
             <ul className="section_3__pagination-list">
               <li className="pagination-item">
                 <button
