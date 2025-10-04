@@ -2,7 +2,7 @@ import glassDark from '../../../../photos/svg/glass-dark.svg';
 import glassLight from '../../../../photos/svg/glass-light.svg';
 import deleteDark from '../../../../photos/svg/delete-dark.svg';
 import deleteLight from '../../../../photos/svg/delete-light.svg';
-import { useTheme } from '../../../context/ThemeContext';
+import { useTheme } from '../../Header/context/ThemeContext';
 
 interface Section1Props {
   searchValue: string;

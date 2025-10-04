@@ -1,6 +1,9 @@
 :root[data-theme='light'] {
   --bg-color: #ffffff;
 
+  --text-error: #e94e4e;
+  --text-answer: #121212;
+
   --header-button-bg: #fcfcfc;
   --header-button-hover: #f3f3f3;
   // --hover-bg: #1212120d;
@@ -22,6 +25,8 @@
 
 :root[data-theme='dark'] {
   --bg-color: #121212;
+
+  --text-answer: #dedede;
 
   --header-button-bg: #1a1818;
   --header-button-hover: #1b1b1b;

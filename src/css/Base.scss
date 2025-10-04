@@ -31,3 +31,26 @@ li {
   width: 100%;
   margin: 0 auto;
 }
+
+/* ================== */
+
+.centered-top-message {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 10vh;
+  font-family: 'CormorantSC', serif;
+  font-weight: 800;
+  font-size: 26px;
+  text-align: center;
+}
+
+.error-message {
+  @extend .centered-top-message;
+  color: var(--text-error);
+}
+
+.loading, .no-results {
+  @extend .centered-top-message;
+  color: var(--text-answer);
+}

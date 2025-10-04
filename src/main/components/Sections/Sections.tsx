@@ -14,22 +14,11 @@ function Sections() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const shouldUseClientSideFiltering = (term: string): boolean => {
-    // const complexQueryPatterns = [
-    //     /\d+/,
-    //     /^[a-zA-Z]\s*\d+/,
-    //     /^\d+\s*[a-zA-Z]/,
-    //     /\s+/,
-    // ];
-    // return complexQueryPatterns.some(pattern => pattern.test(term));
-    return term.includes(' ') || /\d/.test(term);
-  };
-
   const loadData = useCallback(async () => {
     setLoading(true);
     setError(null);
     try {
-      const useClientFilter = shouldUseClientSideFiltering(searchTerm);
+      const useClientFilter = searchTerm.includes(' ') || /\d/.test(searchTerm);
       const { data, totalCount } = await fetchGalleryData(
         currentPage,
         ITEMS_PER_PAGE,
@@ -79,18 +68,23 @@ function Sections() {
         onClearSearch={handleClearSearch}
       />
       {error && <div className="error-message">{error}</div>}
-      {loading ? <div className="loading">Loading...</div> : <Section_2 data={currentItems} />}
-      {totalPages > 0 && !loading && currentItems.length > 0 && (
-        <Section_3
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      )}
-      {!loading && currentItems.length === 0 && !error && (
+      {loading && <div className="loading">Loading...</div>}
+      {!loading && !error && currentItems.length === 0 && (
         <div className="no-results">
           {searchTerm ? `No paintings found for "${searchTerm}"` : 'No paintings available'}
         </div>
+      )}
+      {!loading && !error && currentItems.length > 0 && (
+        <>
+          <Section_2 data={currentItems} />
+          {totalPages > 0 && (
+            <Section_3
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={handlePageChange}
+            />
+          )}
+        </>
       )}
     </>
   );

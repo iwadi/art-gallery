@@ -2,7 +2,7 @@ import logoDark from '../../../photos/logo/logo-dark.png';
 import logoLight from '../../../photos/logo/logo-light.png';
 import moon from '../../../photos/svg/moon.svg';
 import sun from '../../../photos/svg/sun.svg';
-import { useTheme } from '../../context/ThemeContext';
+import { useTheme } from './context/ThemeContext';
 
 function Header() {
   const { isDark, toggleTheme } = useTheme();
