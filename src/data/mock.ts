@@ -5,6 +5,8 @@ export interface GalleryItem {
   image: string;
   title: string;
   date: string;
+  author?: string;
+  location?: string;
 }
 
 export interface GalleryResponse {
@@ -19,6 +21,8 @@ interface RawGalleryItem {
   title?: string;
   created?: string;
   year?: number;
+  author?: string;
+  location?: string;
 }
 
 const BASE_API_URL = 'https://test-front.framework.team';
@@ -38,6 +42,8 @@ const filterItemsClientSide = (items: GalleryItem[], searchTerm: string): Galler
       item.title?.toLowerCase() || '',
       item.date?.toString() || '',
       item.id?.toString() || '',
+      item.author?.toLowerCase() || '',
+      item.location?.toLowerCase() || '',
     ];
 
     const searchParts = searchLower.split(/\s+/);
@@ -70,6 +76,8 @@ export const fetchGalleryData = async (
         image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
         title: item.name || item.title || 'No title',
         date: item.created || item.year?.toString() || 'Unknown date',
+        author: item.author,
+        location: item.location,
       }));
 
       const filteredData = filterItemsClientSide(allData, searchTerm);
@@ -93,6 +101,8 @@ export const fetchGalleryData = async (
         image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
         title: item.name || item.title || 'No title',
         date: item.created || item.year?.toString() || 'Unknown date',
+        author: item.author,
+        location: item.location,
       }));
 
       const totalCount = parseInt(response.headers['x-total-count'] || '0', 10);
