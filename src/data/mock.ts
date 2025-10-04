@@ -14,6 +14,16 @@ export interface GalleryResponse {
   totalCount: number;
 }
 
+export interface Author {
+  id: number;
+  name: string;
+}
+
+export interface Location {
+  id: number;
+  location: string;
+}
+
 interface RawGalleryItem {
   id: number;
   imageUrl?: string;
@@ -21,8 +31,8 @@ interface RawGalleryItem {
   title?: string;
   created?: string;
   year?: number;
-  author?: string;
-  location?: string;
+  authorId?: number;
+  locationId?: number;
 }
 
 const BASE_API_URL = 'https://test-front.framework.team';
@@ -32,10 +42,35 @@ const apiClient = axios.create({
   timeout: 10000,
 });
 
+// Loads a list of all authors from the API
+export const fetchAuthors = async (): Promise<Author[]> => {
+  try {
+    const response = await apiClient.get('/authors');
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch authors:', error);
+    return [];
+  }
+};
+
+// Loads a list of all locations from the API
+export const fetchLocations = async (): Promise<Location[]> => {
+  try {
+    const response = await apiClient.get('/locations');
+    return response.data;
+  } catch (error) {
+    console.error('Failed to fetch locations:', error);
+    return [];
+  }
+};
+
+// Filters gallery items on the client by a search query
 const filterItemsClientSide = (items: GalleryItem[], searchTerm: string): GalleryItem[] => {
   if (!searchTerm.trim()) return items;
 
   const searchLower = searchTerm.toLowerCase().trim();
+
+  const searchParts = searchLower.split(/\s+/);
 
   return items.filter(item => {
     const searchFields = [
@@ -46,8 +81,6 @@ const filterItemsClientSide = (items: GalleryItem[], searchTerm: string): Galler
       item.location?.toLowerCase() || '',
     ];
 
-    const searchParts = searchLower.split(/\s+/);
-
     return searchParts.every(part => {
       if (!part) return true;
       return searchFields.some(field => field.includes(part));
@@ -55,6 +88,7 @@ const filterItemsClientSide = (items: GalleryItem[], searchTerm: string): Galler
   });
 };
 
+// Basic function for loading gallery data with pagination and filtering
 export const fetchGalleryData = async (
   page: number = 1,
   limit: number = 6,
@@ -62,6 +96,14 @@ export const fetchGalleryData = async (
   useClientSideFiltering: boolean = false
 ): Promise<GalleryResponse> => {
   try {
+    const [authors, locations] = await Promise.all([
+      fetchAuthors(),
+      fetchLocations()
+    ]);
+
+    const authorsMap = new Map(authors.map(author => [author.id, author.name]));
+    const locationsMap = new Map(locations.map(location => [location.id, location.location]));
+
     const params: Record<string, unknown> = {
       _page: page,
       _limit: limit,
@@ -76,41 +118,75 @@ export const fetchGalleryData = async (
         image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
         title: item.name || item.title || 'No title',
         date: item.created || item.year?.toString() || 'Unknown date',
-        author: item.author,
-        location: item.location,
+        author: item.authorId ? authorsMap.get(item.authorId) : undefined,
+        location: item.locationId ? locationsMap.get(item.locationId) : undefined,
       }));
 
       const filteredData = filterItemsClientSide(allData, searchTerm);
       const totalCount = filteredData.length;
-      const startIndex = (page - 1) * limit;
+
+      const maxPage = Math.ceil(totalCount / limit);
+      const currentPage = Math.min(page, Math.max(1, maxPage));
+      
+      const startIndex = (currentPage - 1) * limit;
       const endIndex = startIndex + limit;
       const paginatedData = filteredData.slice(startIndex, endIndex);
 
-      return { data: paginatedData, totalCount };
+      return { 
+        data: paginatedData, 
+        totalCount 
+      };
     } else {
       if (searchTerm.trim()) {
-        params.q = searchTerm.trim();
+        const response = await apiClient.get('/paintings');
+        const allDataRaw = response.data as RawGalleryItem[];
+
+        const allData: GalleryItem[] = allDataRaw.map((item: RawGalleryItem) => ({
+          id: item.id,
+          image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
+          title: item.name || item.title || 'No title',
+          date: item.created || item.year?.toString() || 'Unknown date',
+          author: item.authorId ? authorsMap.get(item.authorId) : undefined,
+          location: item.locationId ? locationsMap.get(item.locationId) : undefined,
+        }));
+
+        const filteredData = filterItemsClientSide(allData, searchTerm);
+        const totalCount = filteredData.length;
+
+        const maxPage = Math.ceil(totalCount / limit);
+        const currentPage = Math.min(page, Math.max(1, maxPage));
+        
+        const startIndex = (currentPage - 1) * limit;
+        const endIndex = startIndex + limit;
+        const paginatedData = filteredData.slice(startIndex, endIndex);
+
+        return { 
+          data: paginatedData, 
+          totalCount 
+        };
+      } else {
+        const response = await apiClient.get('/paintings', { params });
+        const responseData = response.data as RawGalleryItem[];
+
+        const galleryItems: GalleryItem[] = responseData.map((item: RawGalleryItem) => ({
+          id: item.id,
+          image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
+          title: item.name || item.title || 'No title',
+          date: item.created || item.year?.toString() || 'Unknown date',
+          author: item.authorId ? authorsMap.get(item.authorId) : undefined,
+          location: item.locationId ? locationsMap.get(item.locationId) : undefined,
+        }));
+
+        const totalCount = parseInt(response.headers['x-total-count'] || '0', 10);
+
+        const maxPage = Math.ceil(totalCount / limit);
+        const currentPage = Math.min(page, Math.max(1, maxPage));
+
+        return {
+          data: galleryItems,
+          totalCount,
+        };
       }
-
-      const response = await apiClient.get('/paintings', { params });
-
-      const responseData = response.data as RawGalleryItem[];
-
-      const galleryItems: GalleryItem[] = responseData.map((item: RawGalleryItem) => ({
-        id: item.id,
-        image: item.imageUrl ? `${BASE_API_URL}${item.imageUrl}` : '',
-        title: item.name || item.title || 'No title',
-        date: item.created || item.year?.toString() || 'Unknown date',
-        author: item.author,
-        location: item.location,
-      }));
-
-      const totalCount = parseInt(response.headers['x-total-count'] || '0', 10);
-
-      return {
-        data: galleryItems,
-        totalCount,
-      };
     }
   } catch (error) {
     console.error('Failed to fetch data from API:', error);
