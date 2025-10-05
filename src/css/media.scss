@@ -6,34 +6,13 @@
   .section_2 {
     min-height: 708px;
 
-  // &__gallery-list {
-  //   grid-template-columns: repeat(2, minmax(clamp(392px, 50vw, 392px), 1fr));
-  // }
+    &__gallery-list {
+      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 492px), 1fr));
+    }
 
-    // &__gallery-item {
-    //   width: 320px;
-    //   // width: clamp(280px, 40vw, 392px);
-    //   position: relative;
-    //   overflow: hidden;
-    //   // aspect-ratio: 4/3; // A CSS property that specifies the aspect ratio of an element, such as an image or video.
-    //   cursor: pointer;
-
-    //   &:hover {
-    //     .section_2__gallery-photo img {
-    //       transform: scale(1.1);
-    //     }
-
-    //     .item-text.name {
-    //       transform: translateY(100%);
-    //       opacity: 0;
-    //     }
-
-    //     .item-info__additional {
-    //       left: 0;
-    //       opacity: 1;
-    //     }
-    //   }
-    // }
+    &__gallery-item {
+      width: clamp(280px, 40vw, 492px);
+    }
   }
   .section_2__item-info {
     .item-info__element {
@@ -55,6 +34,39 @@
         color: var(--gallery-color);
         margin: 0;
       }
+    }
+  }
+}
+@media (max-width: 620px) {
+  .section_2 {
+    &__gallery-list {
+      grid-template-columns: repeat(auto-fit, minmax(clamp(380px, 40vw, 480px), 1fr));
+    }
+
+    &__gallery-item {
+      width: clamp(380px, 40vw, 480px);
+    }
+  }
+}
+@media (max-width: 420px) {
+  .section_2 {
+    &__gallery-list {
+      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 480px), 1fr));
+    }
+
+    &__gallery-item {
+      width: clamp(280px, 40vw, 480px);
+    }
+  }
+}
+@media (max-width: 340px) {
+  .section_2 {
+    &__gallery-list {
+      grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 40vw, 480px), 1fr));
+    }
+
+    &__gallery-item {
+      width: clamp(260px, 40vw, 480px);
     }
   }
 }

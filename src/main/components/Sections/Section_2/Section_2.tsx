@@ -16,7 +16,7 @@ function Section_2({ data }: Section2Props) {
       <div className="container">
         <ul className="section_2__gallery-list">
           {data.map(item => (
-            <li key={item.id} className="section_2__gallery-item">
+            <li key={item.id} className="section_2__gallery-item" tabIndex={0}>
               <div className="section_2__gallery-photo">
                 <img
                   src={item.image} 

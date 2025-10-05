@@ -95,21 +95,40 @@
   &__gallery-list {
     padding: 0;
     margin: 0 auto;
+    // display: flex;
+    // flex-wrap: wrap;
     display: grid;
-    // grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 50vw, 392px), 1fr));
-    grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 50vw, 392px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 392px), 1fr));
     gap: clamp(20px, 3vw, 32px);
     list-style: none;
   }
 
   &__gallery-item {
-    // width: clamp(280px, 40vw, 392px);
+    margin: 0 auto;
+    width: clamp(280px, 40vw, 392px);
+    // width: 392px;
+    // height: 260px;
     position: relative;
     overflow: hidden;
     // aspect-ratio: 4/3; // A CSS property that specifies the aspect ratio of an element, such as an image or video.
     cursor: pointer;
 
     &:hover {
+      .section_2__gallery-photo img {
+        transform: scale(1.1);
+      }
+
+      .item-text.name {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+
+      .item-info__additional {
+        left: 0;
+        opacity: 1;
+      }
+    }
+    &:focus {
       .section_2__gallery-photo img {
         transform: scale(1.1);
       }
@@ -142,14 +161,14 @@
   }
 
   &__item-info {
-    width: clamp(236px, 50vw, 300px);
-    height: clamp(45px, 50vw, 82px);
-    padding: clamp(8px, 50vw, 20px) 0;
+    width: clamp(236px, 10vw, 300px);
+    height: clamp(45px, 30vw, 82px);
+    padding: clamp(8px, 10vw, 20px) 0;
     position: absolute;
     left: 0;
     bottom: 0;
     background: var(--bg-color);
-    padding: 20px 0 20px 0;
+    // padding: 20px 0 20px 0;
     z-index: 1;
   }
 
