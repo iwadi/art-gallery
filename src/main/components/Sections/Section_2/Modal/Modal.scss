@@ -1,0 +1,130 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+  &.modal-open {
+    background-color: rgba(0, 0, 0, 0.9);
+    opacity: 1;
+    visibility: visible;
+    
+    .modal-container {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  &.modal-closing {
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 0;
+    visibility: hidden;
+
+    .modal-container {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+  }
+}
+
+.modal-container {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-image {
+  width: auto;
+  height: auto;
+  max-width: 90%;
+  max-height: calc(90vh - 60px);
+  border-radius: 8px;
+  cursor: default;
+  object-fit: contain;
+}
+
+/* ================== */
+
+.modal-info {
+  display: grid;
+  gap: 10px;
+  text-align: center;
+  margin-top: 15px;
+  max-width: 600px;
+}
+
+.item-title {
+  font-family: 'CormorantSC', serif;
+  font-weight: 500;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 12px 0;
+}
+.item-date {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #e6b266;
+  margin: 0;
+}
+.item-author {
+  font-family: 'CormorantSC', serif;
+  font-weight: 500;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0 0 12px 0;
+}
+.item-location {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #e6b266;
+  margin: 0;
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ================== */
+
+.modal-close {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: rgba(63, 63, 63, 0.7);
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  &:hover {
+    background: rgba(63, 63, 63, 0.7);
+    transform: scale(1.1);
+  }
+}

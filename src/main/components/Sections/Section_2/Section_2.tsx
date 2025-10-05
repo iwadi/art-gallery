@@ -1,15 +1,30 @@
+import { useState, useEffect } from 'react';
 import { type GalleryItem } from '../../../../data/mock';
+import Modal from './Modal/Modal';
 
 interface Section2Props {
   data: GalleryItem[];
 }
 
 function Section_2({ data }: Section2Props) {
+  const [selectedItem, setSelectedItem] = useState<GalleryItem | null>(null);
+
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement>) => {
     const target = e.target as HTMLImageElement;
     target.src = 'src/photos/gallery/404.jpg';
     target.alt = 'Image not available';
   };
+
+  const handleCloseModal = () => setSelectedItem(null);
+
+  useEffect(() => {
+    const handleEscKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setSelectedItem(null);
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+    return () => document.removeEventListener('keydown', handleEscKey);
+  }, []);
 
   return (
     <section className="section_2">
@@ -17,7 +32,11 @@ function Section_2({ data }: Section2Props) {
         <ul className="section_2__gallery-list">
           {data.map(item => (
             <li key={item.id} className="section_2__gallery-item" tabIndex={0}>
-              <div className="section_2__gallery-photo">
+              <div 
+                className="section_2__gallery-photo"
+                onClick={() => setSelectedItem(item)}
+                style={{ cursor: 'pointer' }}
+              >
                 <img
                   src={item.image} 
                   alt={item.title}
@@ -36,21 +55,18 @@ function Section_2({ data }: Section2Props) {
                   <div className="item-text author">
                     <p className="item-author">{item.author}</p>
                     <p className="item-location">{item.location}</p>
-                    {/* {item.author && (
-                      <p className="item-author">{item.author}</p>
-                    )}
-                    {item.location && (
-                      <p className="item-location">{item.location}</p>
-                    )} */}
-                    {/* ================= */}
-                    {/* <p className="item-author">Олег</p>
-                    <p className="item-location">Москва</p> */}
                   </div>
                 </div>
               </div>
             </li>
           ))}
         </ul>
+        
+        <Modal 
+          selectedItem={selectedItem}
+          onClose={handleCloseModal}
+          onImageError={handleImageError}
+        />
       </div>
     </section>
   );
