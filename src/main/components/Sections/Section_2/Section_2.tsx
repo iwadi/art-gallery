@@ -20,7 +20,7 @@ function Section_2({ data }: Section2Props) {
               <div className="section_2__gallery-photo">
                 <img 
                   src={item.image} 
-                  alt={item.title} 
+                  alt={item.title}
                   onError={handleImageError} 
                   loading="lazy"
                 />
@@ -34,12 +34,15 @@ function Section_2({ data }: Section2Props) {
                 </div>
                 <div className="item-info__additional">
                   <div className="item-text author">
-                    {item.author && (
+                    <p className="item-author">{item.author}</p>
+                    <p className="item-location">{item.location}</p>
+                    {/* {item.author && (
                       <p className="item-author">{item.author}</p>
                     )}
                     {item.location && (
                       <p className="item-location">{item.location}</p>
-                    )}
+                    )} */}
+                    {/* ================= */}
                     {/* <p className="item-author">Олег</p>
                     <p className="item-location">Москва</p> */}
                   </div>
