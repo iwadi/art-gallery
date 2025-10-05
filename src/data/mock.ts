@@ -122,11 +122,11 @@ export const fetchGalleryData = async (
     const allItems = allDataRaw.map(item => mapRawToGalleryItem(item, authorsMap, locationsMap));
 
     const filtered = searchTerm ? filterItemsClientSide(allItems, searchTerm) : allItems;
-    const totalCount = searchTerm ? filtered.length : parseInt(headers['x-total-count'] || '0', 10);
+
+    const totalCount = filtered.length;
 
     const startIndex = (page - 1) * limit;
     const paginated = filtered.slice(startIndex, startIndex + limit);
-
     return { data: paginated, totalCount };
   } catch (error) {
     console.error('Failed to fetch gallery data:', error);
