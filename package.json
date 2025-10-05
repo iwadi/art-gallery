@@ -1,5 +1,6 @@
 {
   "name": "project.json",
+  "homepage": "https://iwadi.github.io/art-gallery",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,11 +9,14 @@
     "build": "tsc -b && vite build",
     "lint": "eslint . --fix",
     "prettier": "prettier --write .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.87.4",
     "axios": "^1.12.2",
+    "gh-pages": "^6.3.0",
     "react": "18",
     "react-dom": "18",
     "sass": "^1.92.1"

@@ -18,7 +18,7 @@ function Section_2({ data }: Section2Props) {
           {data.map(item => (
             <li key={item.id} className="section_2__gallery-item">
               <div className="section_2__gallery-photo">
-                <img 
+                <img
                   src={item.image} 
                   alt={item.title}
                   onError={handleImageError} 
