@@ -21,7 +21,7 @@ function Section_2({ data }: Section2Props) {
                 <img
                   src={item.image} 
                   alt={item.title}
-                  onError={handleImageError} 
+                  onError={handleImageError}
                   loading="lazy"
                 />
               </div>

@@ -5,12 +5,37 @@
   }
   .section_2 {
     min-height: 708px;
+
+  // &__gallery-list {
+  //   grid-template-columns: repeat(2, minmax(clamp(392px, 50vw, 392px), 1fr));
+  // }
+
+    // &__gallery-item {
+    //   width: 320px;
+    //   // width: clamp(280px, 40vw, 392px);
+    //   position: relative;
+    //   overflow: hidden;
+    //   // aspect-ratio: 4/3; // A CSS property that specifies the aspect ratio of an element, such as an image or video.
+    //   cursor: pointer;
+
+    //   &:hover {
+    //     .section_2__gallery-photo img {
+    //       transform: scale(1.1);
+    //     }
+
+    //     .item-text.name {
+    //       transform: translateY(100%);
+    //       opacity: 0;
+    //     }
+
+    //     .item-info__additional {
+    //       left: 0;
+    //       opacity: 1;
+    //     }
+    //   }
+    // }
   }
   .section_2__item-info {
-    width: clamp(236px, 50vw, 300px);
-    height: clamp(45px, 50vw, 82px);
-    padding: clamp(8px, 50vw, 20px) 0;
-
     .item-info__element {
       padding-left: 12px;
       border: none;
