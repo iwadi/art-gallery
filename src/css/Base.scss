@@ -5,6 +5,8 @@ html {
 
 body {
   margin: 0;
+  margin-left: 20px;
+  margin-right: 20px;
   background-color: var(--bg-color);
 }
 
@@ -35,14 +37,14 @@ li {
 /* ================== */
 
 .centered-top-message {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  justify-content: left;
   align-items: flex-start;
   margin-top: 10vh;
-  font-family: 'CormorantSC', serif;
-  font-weight: 800;
-  font-size: 26px;
-  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  // text-align: center;
 }
 
 .error-message {
@@ -52,8 +54,19 @@ li {
 
 .loading, .no-results {
   @extend .centered-top-message;
-  color: var(--text-answer);
+  color: var(--unknown);
 }
-// .no-results.two {
-//   @extend .centered-top-message;
-// }
+.no-results {
+  @extend .centered-top-message;
+  gap: 12px;
+}
+.no-result.one {
+  margin: 0;
+}
+.search-term {
+  font-weight: 500px;
+}
+.no-result.two {
+  color: var(--repeat);
+  margin: 0;
+}

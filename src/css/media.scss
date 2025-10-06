@@ -1,8 +1,4 @@
 @media (max-width: 1265px) {
-  .container {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
   .section_2 {
     min-height: 708px;
 
@@ -40,6 +36,10 @@
 }
 @media (max-width: 849px) {
   .section_2 {
+    // &__gallery-list {
+    //   grid-template-columns: repeat(2, minmax(clamp(280px, 75vw, 392px), 1fr));
+    // }
+
     &__item-info {
       padding: 12px 0;
     }
