@@ -166,7 +166,8 @@ function Sections() {
       {loading && <div className="loading">Loading...</div>}
       {!loading && !error && currentItems.length === 0 && (
         <div className="no-results">
-          {searchTerm ? `No paintings found for "${searchTerm}"` : 'No paintings available'}
+          {searchTerm ? `No matches for "${searchTerm}"` : 'No paintings available'}
+          {/* <p className="no-result two">Please try again with a different spelling or keywords.</p> */}
         </div>
       )}
       {!loading && !error && currentItems.length > 0 && (

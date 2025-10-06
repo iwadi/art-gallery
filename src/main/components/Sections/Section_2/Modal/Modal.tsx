@@ -55,12 +55,12 @@ function Modal({ selectedItem, onClose, onImageError }: ModalProps) {
         />
         <div className="modal-info">
           <h3 className="item-title">{selectedItem?.title}</h3>
-          <p className="item-date">{selectedItem?.date}</p>
+          <p className="item-date"><span className="word">Year:</span> {selectedItem?.date}</p>
           {selectedItem?.author && (
-            <p className="item-author">Author: {selectedItem.author}</p>
+            <p className="item-author"><span className="word">Author:</span> {selectedItem.author}</p>
           )}
           {selectedItem?.location && (
-            <p className="item-location">Location: {selectedItem.location}</p>
+            <p className="item-location"><span className="word">Location:</span> {selectedItem.location}</p>
           )}
         </div>
         <button

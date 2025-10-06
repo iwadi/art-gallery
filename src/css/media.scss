@@ -7,16 +7,17 @@
     min-height: 708px;
 
     &__gallery-list {
-      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 492px), 1fr));
+      // grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 492px), 1fr));
     }
 
     &__gallery-item {
-      width: clamp(280px, 40vw, 492px);
+      // width: clamp(280px, 40vw, 492px);
+      // width: none;
     }
   }
   .section_2__item-info {
     .item-info__element {
-      padding-left: 12px;
+      // padding-left: 12px;
       border: none;
 
       .item-title {
@@ -37,36 +38,59 @@
     }
   }
 }
-@media (max-width: 620px) {
+@media (max-width: 849px) {
   .section_2 {
-    &__gallery-list {
-      grid-template-columns: repeat(auto-fit, minmax(clamp(380px, 40vw, 480px), 1fr));
+    &__item-info {
+      padding: 12px 0;
     }
 
-    &__gallery-item {
-      width: clamp(380px, 40vw, 480px);
+    .item-info__element {
+      padding-left: 12px;
+    }
+
+    .item-info__additional {
+      padding: 8px 0 8px 12px;
     }
   }
 }
-@media (max-width: 420px) {
-  .section_2 {
-    &__gallery-list {
-      grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 480px), 1fr));
-    }
+// @media (max-width: 619px) {
+//   .section_2 {
+//     &__gallery-list {
+//       grid-template-columns: none;
+//     }
+//   }
+// }
 
-    &__gallery-item {
-      width: clamp(280px, 40vw, 480px);
-    }
-  }
-}
-@media (max-width: 340px) {
-  .section_2 {
-    &__gallery-list {
-      grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 40vw, 480px), 1fr));
-    }
+// @media (max-width: 620px) {
+//   .section_2 {
+//     &__gallery-list {
+//       grid-template-columns: repeat(auto-fit, minmax(clamp(380px, 40vw, 480px), 1fr));
+//     }
 
-    &__gallery-item {
-      width: clamp(260px, 40vw, 480px);
-    }
-  }
-}
+//     &__gallery-item {
+//       width: clamp(380px, 40vw, 480px);
+//     }
+//   }
+// }
+// @media (max-width: 420px) {
+//   .section_2 {
+//     &__gallery-list {
+//       grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 40vw, 480px), 1fr));
+//     }
+
+//     &__gallery-item {
+//       width: clamp(280px, 40vw, 480px);
+//     }
+//   }
+// }
+// @media (max-width: 340px) {
+//   .section_2 {
+//     &__gallery-list {
+//       grid-template-columns: repeat(auto-fit, minmax(clamp(260px, 40vw, 480px), 1fr));
+//     }
+
+//     &__gallery-item {
+//       width: clamp(260px, 40vw, 480px);
+//     }
+//   }
+// }
